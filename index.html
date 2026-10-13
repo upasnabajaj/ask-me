@@ -1,35 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>Ask Me</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="scripts.js" defer></script>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letterplay — Abstract Typographic Artwork</title>
   <link rel="shortcut icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Playfair+Display:wght@400;700;900&family=Fraunces:wght@400;700;900&family=Bodoni+Moda:wght@400;700;900&family=Cormorant+Garamond:wght@400;600;700&family=Italiana&family=Space+Grotesk:wght@400;500;700&family=DM+Sans:wght@400;500;700&family=Bebas+Neue&family=Archivo+Black&family=Unbounded:wght@400;700;900&family=Rubik+Mono+One&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <h1>Letter<span class="play">play</span></h1>
+        <p class="tagline">Abstract typographic artwork, composed by hand.</p>
+      </div>
+      <div class="toolbar">
+        <button id="inspireBtn" class="btn" title="Fetch an inspiring word">Inspire</button>
+        <button id="randomizeBtn" class="btn btn-accent" title="Generate a composition">Randomize</button>
+        <button id="resetBtn" class="btn" title="Clear the canvas">Reset</button>
+        <button id="downloadBtn" class="btn btn-ink" title="Download PNG">Download PNG</button>
+      </div>
+    </header>
 
-  <header>
-    <a href="index.html" class="header-text">Ask Me</a>
-  </header>
+    <div class="workspace">
+      <aside class="panel">
+        <section class="group">
+          <h3>Add letters</h3>
+          <div class="addrow">
+            <input id="textInput" type="text" placeholder="Type a letter or word" maxlength="80" autocomplete="off">
+            <button id="addBtn" class="btn btn-small">Add</button>
+          </div>
+          <p class="hint">Each character becomes a draggable letter. Or just press a key anywhere.</p>
+        </section>
 
-  <main>
+        <section class="group">
+          <h3>Quick letters</h3>
+          <div class="quick" id="quickLetters"></div>
+        </section>
 
-    <div class="card border shadow">
-      <h2>Ask me anything 👋</h2>
-      <p>Change this line to say what your AI answers questions about.</p>
+        <section class="group">
+          <h3>Selected letter</h3>
+          <div class="props" id="props">
+            <label>Font
+              <select id="fontSelect"></select>
+            </label>
+            <label>Size <span class="val" id="sizeVal">96</span>
+              <input id="sizeRange" type="range" min="18" max="360" value="96">
+            </label>
+            <label>Rotation <span class="val" id="rotVal">0°</span>
+              <input id="rotRange" type="range" min="-180" max="180" value="0">
+            </label>
+            <label>Color
+              <input id="colorPicker" type="color" value="#1a1a1a">
+            </label>
+            <div class="swatches" id="colorSwatches"></div>
+            <div class="row">
+              <button id="frontBtn" class="btn btn-small">To front</button>
+              <button id="dupBtn" class="btn btn-small">Duplicate</button>
+              <button id="delBtn" class="btn btn-small btn-danger">Delete</button>
+            </div>
+            <p class="selinfo" id="selInfo">Nothing selected. Click a letter.</p>
+          </div>
+        </section>
+
+        <section class="group">
+          <h3>Background</h3>
+          <div class="swatches" id="bgSwatches"></div>
+        </section>
+
+        <section class="group group-note">
+          <p class="hint">Drag to move. Handles: top = rotate, bottom-right = resize. Use arrow keys to nudge, Delete to remove.</p>
+        </section>
+      </aside>
+
+      <main class="canvas-wrap">
+        <div id="canvas" class="canvas"></div>
+        <div class="canvas-foot">
+          <span id="count">0 letters</span>
+          <span class="dot">·</span>
+          <span>Letterplay</span>
+        </div>
+      </main>
     </div>
+  </div>
 
-    <!-- Your agent will add the form and the answer here (Lecture 9, step 5) -->
-
-  </main>
-
-  <footer>
-    Made with <span class="heart">&hearts;</span> by me
-  </footer>
-
+  <script src="scripts.js" defer></script>
 </body>
 
 </html>
